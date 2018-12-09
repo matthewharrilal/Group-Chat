@@ -16,8 +16,12 @@ io.on("connection", function(client) {
     console.log("Made socket connection!", client.id)
 
     client.on("chat", function(data) {
-        console.log("MSG DATA " + data)
+        console.log(JSON.stringify(data.handle) + " " + JSON.stringify(data.message))
         io.sockets.emit("chat", data) // Refers to all sockets connected to this io connection
+    })
+
+    client.on("typing", function(data) {
+        client.broadcast.emit("typing", data) // broadcast from the single as oppose to 
     })
 })
 
