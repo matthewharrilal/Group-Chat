@@ -1,7 +1,7 @@
 module.exports = (app) => {
     // Route Stubs
     app.get('/signup/new', (req, res) => {
-        res.send("You have reached the sign up page")
+        res.render('../views/signup')
     })
 
     app.post("/signup", (req, res) => {

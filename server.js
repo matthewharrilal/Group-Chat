@@ -4,7 +4,7 @@ var app = express()
 var socket = require("socket.io")
 const JSON = require("circular-json")
 var exphbs = require('express-handlebars');
-
+var Auth = require("./controllers/auth")(app)
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
