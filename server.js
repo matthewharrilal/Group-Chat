@@ -1,7 +1,21 @@
+require('./data/chat-db')
 var express = require("express")
 var app = express()
 var socket = require("socket.io")
 const JSON = require("circular-json")
+var exphbs = require('express-handlebars');
+
+
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
+
+// Main Template => main.handlebars
+app.set('view engine', 'handlebars');
+
+app.get('/', (req, res) => {
+    res.render("./layouts/main")
+})
 
 var server = app.listen(4000, function(err) {
     console.log("Listening on port 4000")
