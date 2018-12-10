@@ -4,7 +4,15 @@ var app = express()
 var socket = require("socket.io")
 const JSON = require("circular-json")
 var exphbs = require('express-handlebars');
-var Auth = require("./controllers/auth")(app)
+var Auth = require("./controllers/auth")
+const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(expressValidator()); // Add after body parser initialization!
+
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
@@ -12,6 +20,8 @@ app.engine('handlebars', exphbs({
 
 // Main Template => main.handlebars
 app.set('view engine', 'handlebars');
+
+Auth(app)
 
 app.get('/', (req, res) => {
     res.render("./layouts/main")
