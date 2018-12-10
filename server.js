@@ -1,8 +1,11 @@
 require('./data/chat-db')
+require('dotenv').config();
 var express = require("express")
 var app = express()
 var socket = require("socket.io")
 const JSON = require("circular-json")
+const jwt = require('jsonwebtoken');
+var cookieParser = require('cookie-parser');
 var exphbs = require('express-handlebars');
 var Auth = require("./controllers/auth")
 const bodyParser = require('body-parser');
@@ -12,6 +15,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(expressValidator()); // Add after body parser initialization!
+app.use(cookieParser());
 
 
 app.engine('handlebars', exphbs({
