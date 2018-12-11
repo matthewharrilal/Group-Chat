@@ -1,5 +1,6 @@
 var User = require("../models/user")
 const jwt = require('jsonwebtoken');
+const localStorage = require("store")
 
 
 module.exports = (app) => {
@@ -26,6 +27,7 @@ module.exports = (app) => {
                         httpOnly: true
                     });
                     console.log('This is the token ' + token)
+                    localStorage.set("newUsername", req.body.username)
                     res.redirect('/')
                 })
                 .catch((err) => {
@@ -66,7 +68,6 @@ module.exports = (app) => {
                     const token = jwt.sign({
                         _id: user._id,
                         username: user.username,
-                        isAdmin: true
                     }, process.env.SECRET, {
                         expiresIn: "60 days"
                     });
@@ -83,5 +84,11 @@ module.exports = (app) => {
                 console.log(err);
             });
 
-    })
+    });
+
+    app.get('/logout', (req, res) => {
+        res.clearCookie('nToken');
+        res.redirect('/');
+    });
+
 }

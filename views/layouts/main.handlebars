@@ -20,9 +20,13 @@
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">Navbar</span>
         <ul class="nav navbar-nav navbar-left">
+            {{#if user}}
             <li><a href="/logout">Logout</a></li>
+
+            {{else}}
             <li><a href="/login/new">Login</a></li>
             <li><a href="/signup/new">Sign Up</a></li>
+            {{/if}}
         </ul>
 
         <div class="container">
