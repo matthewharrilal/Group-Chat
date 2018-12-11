@@ -37,7 +37,7 @@ module.exports = (app) => {
     })
 
     app.get("/login/new", (req, res) => {
-        res.send("You have reached the login form route")
+        res.render("./login")
     })
 
     app.post("/login", (req, res) => {
