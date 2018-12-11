@@ -39,6 +39,15 @@ UserSchema.pre("save", function (next) {
             next(); // Continue
         });
     });
-})
+});
+
+
+// Need to use function to enable this.password to work.
+UserSchema.methods.comparePassword = function (password, done) {
+    bcrypt.compare(password, this.password, (err, isMatch) => { // Comapre hashed password to rehashed password to confirm
+        done(err, isMatch);
+    });
+
+};
 
 module.exports = mongoose.model("User", UserSchema);
