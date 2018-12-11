@@ -28,7 +28,7 @@ app.set('view engine', 'handlebars');
 Auth(app)
 
 app.get('/', (req, res) => {
-    res.render("./layouts/main")
+    res.render("./chat")
 })
 
 var server = app.listen(4000, function(err) {
