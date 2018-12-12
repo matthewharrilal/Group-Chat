@@ -17,7 +17,12 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: true
-    }
+    },
+    messages: [{
+        type: Schema.Types.ObjectId,
+        ref: "Message",
+        required: false
+    }]
 });
 
 // Before saving the user give them created at and updated at attributes

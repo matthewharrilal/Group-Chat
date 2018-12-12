@@ -17,15 +17,12 @@
                         </div>
                     </div>
                     <div class="col">
-                        <form class="vote-up" action="/vote-up" method="POST">
-                            <button type="submit">Vote Up</button>
+                        {{#if user}}
+                        <form class="clap" action= "/users/{{user._id}}/messages" method="POST">
+                            <button type="submit">Clap It Up</button>
                         </form>
                     </div>
-                    <div class="col">
-                        <form class="vote-up" action="/vote-down" method="POST">
-                            <button type="submit">Vote Up</button>
-                        </form>
-                    </div>
+                    {{/if}}
                 </div>
 
                 <div id="feedback"> </div>

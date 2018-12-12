@@ -8,6 +8,7 @@ const localStorage = require("store")
 var cookieParser = require('cookie-parser');
 var exphbs = require('express-handlebars');
 var Auth = require("./controllers/auth")
+var Message = require("./controllers/message")
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const checkAuth = require("./middleware/checkAuth");
@@ -52,6 +53,7 @@ app.get('/', (req, res) => {
 
 // Check if the user is authorized if they have had a chance to login
 app.use(isUserAuthorized)
+Message(app)
 
 
 var server = app.listen(4000, function (err) {

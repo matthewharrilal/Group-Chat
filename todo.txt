@@ -1,1 +1,4 @@
 Have to store the handler of the user to be when they are autheinticated thats next step though
+
+So what  do  we want to be able to do is the user can vote up or down on a message and to that we go to the messages collection in which the user is keeping an ordered collection of messages
+Now that we have the reference we have to create the model table
