@@ -6,17 +6,30 @@
 
 <body>
     <div id="group-chat">
-<div class="container">
-        <div id="chat-window">
-            
-                <div class="row">
-                    <div id="output">
+        <div class="container">
+            <div id="chat-window">
 
+                <div class="row">
+                    <div class="col">
+
+                        <div id="output">
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <form class="vote-up" action="/vote-up" method="POST">
+                            <button type="submit">Vote Up</button>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <form class="vote-up" action="/vote-down" method="POST">
+                            <button type="submit">Vote Up</button>
+                        </form>
                     </div>
                 </div>
-            
-            <div id="feedback"> </div>
-        </div>
+
+                <div id="feedback"> </div>
+            </div>
         </div>
         <input id="handle" type="text" placeholder="Handle" />
         <input id="message" type="text" placeholder="Message" />

@@ -21,7 +21,8 @@ message.addEventListener('keypress', function() {
     socket.emit("typing", handle.value)
 })
 socket.on("chat", function(data) {
-    insertedHtml = ['<div class=row"> <div class="col" text-right>', '</div><div class="col" text-right><button type="submit" >Vote Up</button></div><div class="col"><button type="submit" >Vote Down</button></div></div>']
+    // <button type="submit" >Vote Up</button>
+    insertedHtml = ['<div class=row"> <div class="col">', '</div><div class="col"> <form class="vote-up"><button type="submit">Vote Up</button> </form>  </div><div class="col"><form class="vote-up"><button type="submit">Vote Down</button> </form></div></div>']
     feedback.innerHTML = "";
     output.innerHTML += insertedHtml[0] + "<p><strong>" + data.handle + ":</strong>" + data.message +  insertedHtml[1]
 })
