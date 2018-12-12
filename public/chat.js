@@ -13,8 +13,7 @@ var feedback = document.getElementById("feedback")
 // Listen for when user clicks the send button
 send.addEventListener("click", function() {
     socket.emit("chat", {
-        message: message.value, // Emit the message value to the server 
-        handle: handle.value
+        message: message.value // Emit the message value to the server 
     }) 
 });
 
@@ -22,10 +21,12 @@ message.addEventListener('keypress', function() {
     socket.emit("typing", handle.value)
 })
 socket.on("chat", function(data) {
+    insertedHtml = ['<div class=row"> <div class="col" text-right>', '</div><div class="col" text-right><button type="submit" >Vote Up</button></div><div class="col"><button type="submit" >Vote Down</button></div></div>']
     feedback.innerHTML = "";
-    output.innerHTML += "<p><strong>" + data.handle + ":</strong>" + data.message 
+    output.innerHTML += insertedHtml[0] + "<p><strong>" + data.handle + ":</strong>" + data.message +  insertedHtml[1]
 })
 
 socket.on("typing", function(data) {
+    console.log("That data " + data)
     feedback.innerHTML = '<p><em>' + data + " is typing a message ... </em></p>";
 })

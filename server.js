@@ -34,21 +34,18 @@ var username;
 app.get('/', (req, res) => {
     if (!req.user) {
         res.redirect("/signup/new")
-    }
-    else {
+    } else {
         console.log("LOCALSS " + JSON.stringify(res.locals))
         localStorage.set("username", res.locals.user["username"])
         // localStorage.setItem("username", res.locals.user["username"]);
-        if (!localStorage.get("username")) {
-            console.log("USERNAMEE " +  localStorage.get("newUsername"))
-        }
-
-        else {
-            console.log("USERNAMEE " +  localStorage.get("username"))
-        }
+        // if (!localStorage.get("username")) {
+        //     console.log("USERNAMEE " + localStorage.get("newUsername"))
+        // } else {
+        //     console.log("USERNAMEE " + localStorage.get("username"))
+        // }
 
 
-        
+
         res.render("./chat")
     }
 });
@@ -71,17 +68,15 @@ io.on("connection", function (client) {
 
     client.on("chat", function (data) {
         console.log(JSON.stringify(data.handle) + " " + JSON.stringify(data.message))
+        var username = localStorage.get("username") ? localStorage.get("username") : localStorage.get("newUsername")
+
+        data.handle = username
         io.sockets.emit("chat", data) // Refers to all sockets connected to this io connection
     })
 
     client.on("typing", function (data) {
-        if (!localStorage.get("username")) {
-            client.broadcast.emit("typing", localStorage.get("newUsername"))
-        }
-
-        else {
-            client.broadcast.emit("typing", localStorage.get("username")) // broadcast from the single as oppose to 
-        }
-        
+        var username = localStorage.get("username") ? localStorage.get("username") : localStorage.get("newUsername")
+        console.log("USERNAMEEEE " + username)
+        client.broadcast.emit("typing", username) // broadcast from the single as oppose to 
     })
 })

@@ -92,3 +92,11 @@ module.exports = (app) => {
     });
 
 }
+
+
+
+// {{!-- <div>
+//     <button type="submit">Vote Up</button>
+
+//     <button type="submit">Vote Down</button>
+// </div> --}}
