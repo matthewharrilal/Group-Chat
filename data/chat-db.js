@@ -1,20 +1,20 @@
 /* Mongoose Connection */
 const mongoose = require("mongoose");
 assert = require("assert");
+require('dotenv').config()
 
-const url = "mongodb://localhost/chat-db";
 mongoose.Promise = global.Promise;
-mongoose.connect(
-    url, {
-        useNewUrlParser: true
-    },
-    function(err, db) {
-        assert.equal(null, err);
-        console.log("Connected successfully to database");
 
-        // db.close(); turn on for testing
-    }
-);
+if(process.env.MLAB_URL) {
+    mongoose.connect(process.env.MLAB_URL);
+    console.log('Connected to MongoDB on this uri ' + process.env.MLAB_URL)
+  } else {
+  
+    // Connect to local database
+    console.log("WORLD ENDER DESTROYER")
+    mongoose.connect("mongodb://localhost/chat-db");
+  }
+  
 mongoose.connection.on("error", console.error.bind(console, "MongoDB connection Error:"));
 mongoose.set("debug", true);
 

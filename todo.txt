@@ -2,3 +2,5 @@ Have to store the handler of the user to be when they are autheinticated thats n
 
 So what  do  we want to be able to do is the user can vote up or down on a message and to that we go to the messages collection in which the user is keeping an ordered collection of messages
 Now that we have the reference we have to create the model table
+
+So right now we have to add the clap button back to the post so that we can use jquery on the dom element and trigger the request

@@ -24,7 +24,9 @@ socket.on("chat", function(data) {
     // <button type="submit" >Vote Up</button>
     insertedHtml = ['<div class=row"> <div class="col">', '</div><div class="col"> <form class="vote-up"><button type="submit">Vote Up</button> </form>  </div><div class="col"><form class="vote-up"><button type="submit">Vote Down</button> </form></div></div>']
     feedback.innerHTML = "";
-    output.innerHTML += insertedHtml[0] + "<p><strong>" + data.handle + ":</strong>" + data.message +  insertedHtml[1]
+    // output.innerHTML += insertedHtml[0] + "<p><strong>" + data.handle + ":</strong>" + data.message +  insertedHtml[1]
+    output.innerHTML += "<p><strong>" + data.handle + ":</strong>" + data.message
+
 })
 
 socket.on("typing", function(data) {
